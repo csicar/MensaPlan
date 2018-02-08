@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:defaultValue="1"
+        android:key="price_group"
+        android:entries="@array/pref_price_group_titles"
+        android:entryValues="@array/pref_price_group_values"
+        android:title="Price Group"
+        />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="show_additives"
+        android:summary="@string/pref_description_show_additives"
+        android:title="@string/pref_show_additives" />
+
+    <MultiSelectListPreference
+        android:key="additives"
+        android:title="Wähle Allergene"
+        android:summary="Gerichte, die gewählte Allergene enthalten werden ausgegraut angezeigt"
+        android:entries="@array/pref_additives_titles"
+        android:entryValues="@array/pref_additives_values"
+        />
+
+    <PreferenceScreen
+        android:title="Website and Code"
+        android:key="code_info">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/csicar/MensaPlan"/>
+    </PreferenceScreen>
+</PreferenceScreen>

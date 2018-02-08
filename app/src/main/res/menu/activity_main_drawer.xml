@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/canteen_tiefenbronner"
+            android:checkable="true"
+            android:title="Mensa Hochschule Pforzheim" />
+        <item
+            android:id="@+id/canteen_adenauerring"
+            android:checkable="true"
+            android:title="Mensa am Adenauer Ring" />
+        <item
+            android:id="@+id/canteen_moltke"
+            android:checkable="true"
+            android:title="Mensa Molkestraße" />
+        <item
+            android:id="@+id/canteen_erzberger"
+            android:checkable="true"
+            android:title="Mensa Erzbergerstraße" />
+        <item
+            android:id="@+id/canteen_gottesaue"
+            android:checkable="true"
+            android:title="Mensa Schloss Gottesaue" />
+        <item
+            android:id="@+id/canteen_holzgarten"
+            android:checkable="true"
+            android:title="Mensa I Holzgarten (Stuttgart-Mitte)" />
+    </group>
+
+</menu>
