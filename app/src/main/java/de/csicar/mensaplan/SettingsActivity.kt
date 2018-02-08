@@ -14,6 +14,7 @@ import android.preference.PreferenceActivity
 import android.preference.PreferenceFragment
 import android.preference.PreferenceManager
 import android.preference.RingtonePreference
+import android.support.v4.app.NavUtils
 import android.text.TextUtils
 import android.view.MenuItem
 
@@ -28,6 +29,14 @@ import android.view.MenuItem
  * for more information on developing a Settings UI.
  */
 class SettingsActivity : AppCompatPreferenceActivity() {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item?.itemId
+        if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,12 +86,6 @@ class SettingsActivity : AppCompatPreferenceActivity() {
             addPreferencesFromResource(R.xml.pref_general)
             setHasOptionsMenu(true)
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("example_text"))
-            bindPreferenceSummaryToValue(findPreference("example_list"))
         }
 
         override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -70,7 +70,7 @@ class FoodDay(val date: Date, val lines: List<Line>) {
     }
 }
 
-class Line(val name: String, val meals: List<Meal>) {
+sealed class Line(val name: String) {
     companion object {
         val niceNames = mapOf<String, String>(
                 "l1" to "Linie 1",
@@ -94,11 +94,31 @@ class Line(val name: String, val meals: List<Meal>) {
             val lines = mutableListOf<Line>()
             content.keys().forEach {
                 //TODO when "closing_start" is the only meal, set line to closed
-                val meals = Meal.mealsFromJson(content.getJSONArray(it))
-                val line = Line(it, meals)
-                lines.add(line)
+                val children = content.getJSONArray(it)
+                if (children.length() != 0
+                        && children.getJSONObject(0).has("closing_start")
+                        && children.getJSONObject(0).has("closing_end")) {
+                    val closingStart = children.getJSONObject(0).getLong("closing_start")
+                    val closingEnd = children.getJSONObject(0).getLong("closing_end")
+
+                    val line = ClosedLine(it, Date(closingStart*1000), Date(closingEnd*1000))
+                    lines.add(line)
+                } else {
+                    val meals = Meal.mealsFromJson(children)
+                    val line = OpenLine(it, meals)
+                    lines.add(line)
+                }
             }
             return lines
+        }
+    }
+
+    class OpenLine(name: String, val meals: List<Meal>) : Line(name)
+    class ClosedLine(name: String, val closingStart: Date, val closingEnd: Date) : Line(name) {
+        fun getFormattetClosed() : String {
+            val start = SimpleDateFormat("E (d.M.)").format(closingStart)
+            val end = SimpleDateFormat("E (d.M.)").format(closingEnd)
+            return "$start - $end"
         }
     }
 

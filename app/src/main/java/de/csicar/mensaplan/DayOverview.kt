@@ -59,9 +59,13 @@ class DayOverview : Fragment() {
         items.clear()
         canteenValue.days[dayIndex].lines.forEach {
             items.add(ListItem.HeaderItem(it))
-            it.meals.forEach {
-                items.add(ListItem.MealItem(it))
+            when (it) {
+                is Line.ClosedLine -> {}
+                is Line.OpenLine -> it.meals.forEach {
+                    items.add(ListItem.MealItem(it))
+                }
             }
+
         }
         adapter.notifyDataSetChanged()
     }
@@ -92,7 +96,11 @@ class DayOverview : Fragment() {
             val item = sList[position]
             when(item) {
                 is ListItem.HeaderItem -> {
-                    holder?.lineTitle?.text = item.line.getNiceName()
+                    when(item.line) {
+                        is Line.OpenLine -> holder?.lineTitle?.text = item.line.getNiceName()
+                        is Line.ClosedLine -> holder?.lineTitle?.text = "${item.line.getNiceName()} closed: ${item.line.getFormattetClosed()}"
+                    }
+
                 }
                 is ListItem.MealItem -> {
                     val context = holder?.row!!.context
