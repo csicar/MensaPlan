@@ -110,9 +110,11 @@ class DayOverview : Fragment() {
                     val context = holder?.row!!.context
                     holder.mealName?.text = item.meal.meal
                     holder.mealDesc?.text = item.meal.dish
-                    holder.additives?.text = item.meal.additives.joinToString(", ") + item.meal.properties.joinToString(",")
+                    holder.additives?.text = item.meal.additives.joinToString(", ") + " " + item.meal.properties
+                            .map { it.getNiceName(context.resources) }
+                            .joinToString(",")
                     holder.price?.text = item.meal.price.showPrice(holder.price!!.context)
-                    holder.mealContainer?.alpha = when (item.meal.containsBadAdditives(context)) {
+                    holder.mealContainer?.alpha = when (item.meal.containsBadAdditives(context) || item.meal.containsBadProperties(context)) {
                         true -> 0.2f
                         else -> 1.0f
                     }

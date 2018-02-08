@@ -1,6 +1,7 @@
 package de.csicar.mensaplan
 
 import android.content.Context
+import android.content.res.Resources
 import android.net.Uri
 import android.preference.PreferenceManager
 import android.text.format.DateUtils
@@ -168,8 +169,13 @@ class Meal(
 
     }
     fun containsBadAdditives(context: Context) : Boolean {
-        val badAdditives = PreferenceManager.getDefaultSharedPreferences(context).getStringSet("additives", emptySet<String>())
+        val badAdditives = PreferenceManager.getDefaultSharedPreferences(context).getStringSet("food_additives", emptySet<String>())
         return additives.any { badAdditives.contains(it) }
+    }
+
+    fun containsBadProperties(context: Context) : Boolean {
+        val badProperties = PreferenceManager.getDefaultSharedPreferences(context).getStringSet("food_properties", emptySet())
+        return properties.any { badProperties.contains(it.jsonName)  }
     }
 }
 
@@ -209,16 +215,16 @@ class Price(val price1: Double, val price2: Double, val price3: Double, val pric
 
 }
 
-enum class MealProperty(val jsonName: String, val niceName: String) {
-    BIO("bio", "Bio"),
-    FISH("fish", "Fish"),
-    PORK("pork", "Schwein"),
-    PORK_AW("pork_aw", "Schwein aus artgerechter Tierhaltung"),
-    COW("cow", "Kuh"),
-    COW_AW("cow_aw", "Kuh artgerechter Tierhaltung"),
-    VEGAN("vegan", "Vegan"),
-    VEG("veg", "Vegetarisch"),
-    MENSA_VIT("mensa_vit", "Mensa Vital");
+enum class MealProperty(val jsonName: String) {
+    BIO("bio"),
+    FISH("fish"),
+    PORK("pork"),
+    PORK_AW("pork_aw"),
+    COW("cow"),
+    COW_AW("cow_aw"),
+    VEGAN("vegan"),
+    VEG("veg"),
+    MENSA_VIT("mensa_vit");
 
     companion object {
         fun mealPropertiesFromJson(content : JSONObject) : List<MealProperty> {
@@ -226,5 +232,14 @@ enum class MealProperty(val jsonName: String, val niceName: String) {
                 content.has(it.jsonName) && content.getBoolean(it.jsonName)
             }
         }
+    }
+
+    fun getNiceName(resources: Resources) : String {
+        val jsonNameIndex = resources.getStringArray(R.array.pref_properties_values).indexOfFirst { it == jsonName }
+        if (jsonNameIndex < 0) {
+            return jsonName
+        }
+        val niceName = resources.getStringArray(R.array.pref_properties_titles)[jsonNameIndex]
+        return niceName
     }
 }

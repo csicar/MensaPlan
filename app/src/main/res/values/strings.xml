@@ -69,7 +69,7 @@
         <item>Fisch</item>
         <item>Milch / Laktose</item>
         <item>Sellerie</item>
-        <item>Schwefeldioxid / Sulfit  </item>
+        <item>Schwefeldioxid / Sulfit</item>
         <item>Sesam</item>
         <item>Lupine</item>
         <item>Weichtiere</item>
@@ -105,6 +105,41 @@
         <item>Lu</item>
         <item>We</item>
     </string-array>
+
+    <string-array name="pref_properties_titles">
+        <item>Bio</item>
+        <item>Fish</item>
+        <item>Schwein</item>
+        <item>Schwein aus artgerechter Tierhaltung</item>
+        <item>Schweinefleisch</item>
+        <item>Schweinefleisch aus artgerechter Tierhaltung</item>
+        <item>Vegan</item>
+        <item>Vegeratisch</item>
+        <item>Mensa Vital</item>
+    </string-array>
+    <string-array name="pref_properties_values">
+        <item>bio</item>
+        <item>fish</item>
+        <item>pork</item>
+        <item>pork_aw</item>
+        <item>cow</item>
+        <item>cow_aw</item>
+        <item>vegan</item>
+        <item>veg</item>
+        <item>mensa_vit</item>
+    </string-array>
+
+    <!--<string-array name="pref_canteen_titles">
+        <item>Mensa am A</item>
+    </string-array>
+    <string-array name="pref_canteen_values">
+        <item>adenauerring</item>
+        <item>tiefenbronner</item>
+        <item>moltke</item>
+        <item>erzberger</item>
+        <item>gottesaue</item>
+        <item>holzgarten</item>
+    </string-array>-->
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>

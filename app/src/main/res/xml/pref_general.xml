@@ -13,11 +13,19 @@
         android:title="@string/pref_show_additives" />
 
     <MultiSelectListPreference
-        android:key="additives"
+        android:key="food_additives"
         android:title="Wähle Allergene"
         android:summary="Gerichte, die gewählte Allergene enthalten werden ausgegraut angezeigt"
         android:entries="@array/pref_additives_titles"
         android:entryValues="@array/pref_additives_values"
+        />
+
+    <MultiSelectListPreference
+        android:key="food_properties"
+        android:title="Wähle Inhaltsstoffe"
+        android:summary="Gerichte, die gewählte Inhaltsstoffe enthalten werden ausgegraut angezeigt"
+        android:entries="@array/pref_properties_titles"
+        android:entryValues="@array/pref_properties_values"
         />
 
     <PreferenceScreen
