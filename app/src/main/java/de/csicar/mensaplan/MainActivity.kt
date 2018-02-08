@@ -31,19 +31,19 @@ import android.view.MotionEvent
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val CANTEEN = "de.csicar.mensaplan.CANTEEN"
     val NAVBAR_ID = "de.csicar.mensaplan.NAVBAR_ID"
+    var selectedCanteenName : String = "adenauerring"
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val selectedCanteenName = intent.getStringExtra(CANTEEN) ?: "adenauerring"
+
+        selectedCanteenName = savedInstanceState?.getString(CANTEEN) ?: selectedCanteenName
+        selectedCanteenName = intent.getStringExtra(CANTEEN) ?: selectedCanteenName
         title = Canteen.getNiceNameFor(selectedCanteenName)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            BackendApi.refresh(this, Response.ErrorListener { showNetworkProblem(view, it) })
-        }
 
         toolbar.setOnClickListener {
             val intent = Intent(this, CanteenDetail::class.java)
@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.day_overview_swipe_refresher)
         swipeRefreshLayout.setOnRefreshListener {
             refreshFromBackend()
+        }
+        fab.setOnClickListener { view ->
+            swipeRefreshLayout.isRefreshing = true
+            BackendApi.refresh(this, Response.ErrorListener { showNetworkProblem(view, it) })
         }
         val pager = findViewById<ViewPager>(R.id.day_overview_pager)
 
@@ -92,6 +96,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+
+        outState?.putString(CANTEEN, selectedCanteenName)
+        super.onSaveInstanceState(outState)
+
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (savedInstanceState == null) {
+            return
+        }
+        selectedCanteenName = savedInstanceState.getString(CANTEEN)
+    }
+
     private fun selectTodaysPane(pagerAdapter: PagerAdapter, selectedCanteenName: String) {
         // select pane that matches today, if available
         findViewById<ViewPager>(R.id.day_overview_pager).apply {
@@ -111,7 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun showNetworkProblem(view: View, error: VolleyError) {
-        Snackbar.make(view, "Could not connect to server:" + error.networkResponse.statusCode, Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "Could not connect to server:" + error.networkResponse?.statusCode, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
     }
 

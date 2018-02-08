@@ -1,17 +1,14 @@
 package de.csicar.mensaplan
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.net.Uri
 import android.preference.PreferenceManager
 import android.text.format.DateUtils
-import android.util.Log
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.roundToInt
 
 /**
  * Created by csicar on 06.02.18.
@@ -93,7 +90,6 @@ sealed class Line(val name: String) {
         fun linesFromJson(content: JSONObject) : List<Line> {
             val lines = mutableListOf<Line>()
             content.keys().forEach {
-                //TODO when "closing_start" is the only meal, set line to closed
                 val children = content.getJSONArray(it)
                 if (children.length() != 0
                         && children.getJSONObject(0).has("closing_start")
@@ -116,9 +112,9 @@ sealed class Line(val name: String) {
     class OpenLine(name: String, val meals: List<Meal>) : Line(name)
     class ClosedLine(name: String, val closingStart: Date, val closingEnd: Date) : Line(name) {
         fun getFormattetClosed() : String {
-            val start = SimpleDateFormat("E (d.M.)").format(closingStart)
-            val end = SimpleDateFormat("E (d.M.)").format(closingEnd)
-            return "$start - $end"
+            val start = SimpleDateFormat("d.M.").format(closingStart)
+            val end = SimpleDateFormat("d.M.").format(closingEnd)
+            return "$start bis $end"
         }
     }
 
@@ -129,7 +125,8 @@ class Meal(
         val meal: String,
         val dish: String,
         val additives: List<String>,
-        val price: Price) {
+        val price: Price,
+        val properties: List<MealProperty>) {
     companion object {
 
         fun mealsFromJson(content: JSONArray) : List<Meal> {
@@ -153,7 +150,8 @@ class Meal(
                     content.getString("meal"),
                     content.getString("dish"),
                     additivesFromJson(content.getJSONArray("add")),
-                    Price.priceFromJson(content)
+                    Price.priceFromJson(content),
+                    MealProperty.mealPropertiesFromJson(content)
                     )
         }
 
@@ -200,6 +198,33 @@ class Price(val price1: Double, val price2: Double, val price3: Double, val pric
         }
         val format = NumberFormat.getCurrencyInstance()
 
-        return format.format(price)
+        return "${showFlag()} ${format.format(price)}"
+    }
+
+    fun showFlag() : String = when(priceFlag) {
+        0 -> ""
+        1 -> "ab"
+        else -> ""
+    }
+
+}
+
+enum class MealProperty(val jsonName: String, val niceName: String) {
+    BIO("bio", "Bio"),
+    FISH("fish", "Fish"),
+    PORK("pork", "Schwein"),
+    PORK_AW("pork_aw", "Schwein aus artgerechter Tierhaltung"),
+    COW("cow", "Kuh"),
+    COW_AW("cow_aw", "Kuh artgerechter Tierhaltung"),
+    VEGAN("vegan", "Vegan"),
+    VEG("veg", "Vegetarisch"),
+    MENSA_VIT("mensa_vit", "Mensa Vital");
+
+    companion object {
+        fun mealPropertiesFromJson(content : JSONObject) : List<MealProperty> {
+            return MealProperty.values().filter {
+                content.has(it.jsonName) && content.getBoolean(it.jsonName)
+            }
+        }
     }
 }

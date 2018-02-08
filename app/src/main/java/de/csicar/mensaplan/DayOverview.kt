@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.android.volley.Response
-import org.w3c.dom.Text
 
 
 /**
@@ -96,9 +95,14 @@ class DayOverview : Fragment() {
             val item = sList[position]
             when(item) {
                 is ListItem.HeaderItem -> {
+                    holder?.headerClosedInfo?.visibility = View.GONE
                     when(item.line) {
                         is Line.OpenLine -> holder?.lineTitle?.text = item.line.getNiceName()
-                        is Line.ClosedLine -> holder?.lineTitle?.text = "${item.line.getNiceName()} closed: ${item.line.getFormattetClosed()}"
+                        is Line.ClosedLine -> {
+                            holder?.lineTitle?.text = item.line.getNiceName()
+                            holder?.headerClosedInfo?.text = "geschlossen von ${item.line.getFormattetClosed()}"
+                            holder?.headerClosedInfo?.visibility = View.VISIBLE
+                        }
                     }
 
                 }
@@ -106,7 +110,7 @@ class DayOverview : Fragment() {
                     val context = holder?.row!!.context
                     holder.mealName?.text = item.meal.meal
                     holder.mealDesc?.text = item.meal.dish
-                    holder.additives?.text = item.meal.additives.joinToString(", ")
+                    holder.additives?.text = item.meal.additives.joinToString(", ") + item.meal.properties.joinToString(",")
                     holder.price?.text = item.meal.price.showPrice(holder.price!!.context)
                     holder.mealContainer?.alpha = when (item.meal.containsBadAdditives(context)) {
                         true -> 0.2f
@@ -139,7 +143,7 @@ class DayOverview : Fragment() {
         val additives: TextView? = row?.findViewById(R.id.list_row_additives)
         val price: TextView? = row?.findViewById(R.id.list_row_price)
         val mealContainer : View?  = row?.findViewById(R.id.list_row_meal_container)
-
+        val headerClosedInfo : TextView? = row?.findViewById(R.id.list_header_closed_info)
     }
 
     companion object {
