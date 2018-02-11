@@ -46,19 +46,8 @@ class CanteenDetail : AppCompatActivity() {
         }
         val imageUrl = Canteen.getImageUrlFor(canteenName)
         if (imageUrl != null) {
-            val image = ImageView(this)
             Picasso.with(this).load(imageUrl)
-                .into(image, object : Callback {
-                    override fun onSuccess() {
-
-                        findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).setBackgroundDrawable(image.drawable);
-                    }
-
-                    override fun onError() {
-
-                    }
-
-                })
+                .into(findViewById<ImageView>(R.id.canteen_image))
         }
 
     }

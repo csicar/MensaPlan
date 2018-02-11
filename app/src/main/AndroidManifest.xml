@@ -3,6 +3,7 @@
     package="de.csicar.mensaplan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:allowBackup="true"
@@ -20,10 +21,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.shortcuts"
+
+            <meta-data
+                android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
-
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -34,7 +36,16 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.csicar.mensaplan.MainActivity"/>
+                android:value="de.csicar.mensaplan.MainActivity" />
+        </activity>
+        <activity
+            android:name=".kitcard.KitCardActivity"
+            android:label="@string/title_activity_kit_card"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/filter_nfc" />
         </activity>
     </application>
 

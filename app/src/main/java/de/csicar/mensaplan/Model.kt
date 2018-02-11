@@ -119,7 +119,7 @@ sealed class Line(val name: String) {
         }
     }
 
-    fun getNiceName() : String = niceNames.getOrDefault(name, name)
+    fun getNiceName() : String = niceNames.get(name) ?: name
 }
 
 class Meal(
@@ -242,4 +242,11 @@ enum class MealProperty(val jsonName: String) {
         val niceName = resources.getStringArray(R.array.pref_properties_titles)[jsonNameIndex]
         return niceName
     }
+}
+
+enum class CardType() {
+    STUDENT,
+    EMPLOYEE,
+    GUEST,
+    UNKNOWN
 }
