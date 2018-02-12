@@ -16,7 +16,7 @@ import java.util.*
  */
 class Canteen(val name: String, val days: List<FoodDay>){
     companion object {
-        val excludedCanteenNames : List<String> = listOf("date", "import_date")
+        private val excludedCanteenNames : List<String> = listOf("date", "import_date")
 
         fun getNiceNameFor(name: String) = Canteens.default[name]?.niceName ?: name
 
@@ -244,7 +244,7 @@ enum class MealProperty(val jsonName: String) {
     }
 }
 
-enum class CardType() {
+enum class CardType {
     STUDENT,
     EMPLOYEE,
     GUEST,

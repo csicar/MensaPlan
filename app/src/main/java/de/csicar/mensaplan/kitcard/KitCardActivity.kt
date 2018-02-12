@@ -28,14 +28,14 @@ class KitCardActivity : AppCompatActivity() {
         if (cardInfo == null) {
             return
         }
-        val contextTextView = findViewById<TextView>(R.id.kitcard_content)
-        contextTextView.text = """Current: ${cardInfo.currentBalanceText}
-             last: ${cardInfo.lastTransactionText}
-             of id: ${cardInfo.cardNumber}
-             by issuer ${cardInfo.cardIssuer}
-             with role ${cardInfo.cardType}
-             transaction count1 ${cardInfo.transactionCount1}
-             transaction count2 ${cardInfo.transactionCount2}"""
+
+        val kitCardBalance = findViewById<TextView>(R.id.kitcard_balance)
+        val kitCardLastTransaction = findViewById<TextView>(R.id.kitcard_last_transaction)
+        val kitCardAdditionalInfo = findViewById<TextView>(R.id.kitcard_additional_info)
+
+        kitCardBalance.text = cardInfo.currentBalanceText
+        kitCardLastTransaction.text = cardInfo.lastTransactionText
+        kitCardAdditionalInfo.text = "${cardInfo.cardType} an ${cardInfo.cardIssuer}\n 1: ${cardInfo.transactionCount1} 2: ${cardInfo.transactionCount2}"
     }
 
 

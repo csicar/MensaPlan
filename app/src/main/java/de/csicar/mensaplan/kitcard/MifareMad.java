@@ -29,11 +29,11 @@ package de.csicar.mensaplan.kitcard;
  */
 
 
-        import java.io.IOException;
-        import java.util.ArrayList;
+import android.nfc.tech.MifareClassic;
+import android.util.Log;
 
-        import android.nfc.tech.MifareClassic;
-        import android.util.Log;
+import java.io.IOException;
+import java.util.ArrayList;
 
 class MifareApp {
     final int fcc;

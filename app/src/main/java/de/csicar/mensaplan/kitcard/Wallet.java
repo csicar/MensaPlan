@@ -18,19 +18,20 @@ package de.csicar.mensaplan.kitcard;
  * along with KITCard Reader. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
-
 import android.nfc.tech.MifareClassic;
 import android.util.Log;
 
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
+import org.joda.money.format.MoneyAmountStyle;
 import org.joda.money.format.MoneyFormatter;
 import org.joda.money.format.MoneyFormatterBuilder;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
 
 import de.csicar.mensaplan.CardType;
 
@@ -67,7 +68,11 @@ public class Wallet {
 
     private static final CurrencyUnit currency = CurrencyUnit.EUR;
     private static final int moneyDecimalPointOffset = 2;
-    private static final MoneyFormatter moneyFormatter = new MoneyFormatterBuilder().appendAmount().appendCurrencySymbolLocalized().toFormatter(Locale.GERMANY);
+    private static final MoneyFormatter moneyFormatter =
+            new MoneyFormatterBuilder()
+            .appendAmount(MoneyAmountStyle.ASCII_DECIMAL_COMMA_GROUP3_DOT)
+            .appendCurrencySymbolLocalized()
+            .toFormatter(Locale.GERMANY);
 
 
 

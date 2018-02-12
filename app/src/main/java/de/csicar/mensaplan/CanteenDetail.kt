@@ -2,22 +2,11 @@ package de.csicar.mensaplan
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
-import com.squareup.picasso.Picasso
-import com.squareup.picasso.Target
-import kotlinx.android.synthetic.main.activity_canteen_detail.*
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.Bitmap
-import android.net.Uri
-import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.design.widget.CollapsingToolbarLayout
-import android.support.v7.widget.Toolbar
 import android.widget.TextView
-import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_canteen_detail.*
 
 
 class CanteenDetail : AppCompatActivity() {
