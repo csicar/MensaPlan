@@ -23,7 +23,10 @@ class ReadCardTask(private val tag: Tag, private val callback: KFunction1<@Param
             return null
         }
         val wallet = Wallet(card)
-        wallet.readCard()
+        val readCardResult = wallet.readCard()
+        if (readCardResult != Wallet.ReadCardResult.SUCCESS) {
+            return null
+        }
         return wallet
     }
 
