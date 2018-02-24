@@ -1,10 +1,12 @@
 package de.csicar.mensaplan
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +22,8 @@ import com.android.volley.Response
  * Use the [DayOverview.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DayOverview : Fragment() {
+class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListener {
+    private lateinit var adapter: ListExampleAdapter
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_day_overview, container, false)
@@ -35,7 +38,7 @@ class DayOverview : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
 
-        val adapter = ListExampleAdapter(items)
+        adapter = ListExampleAdapter(items)
 
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -59,7 +62,8 @@ class DayOverview : Fragment() {
         canteenValue.days[dayIndex].lines.forEach {
             items.add(ListItem.HeaderItem(it))
             when (it) {
-                is Line.ClosedLine -> {}
+                is Line.ClosedLine -> {
+                }
                 is Line.OpenLine -> it.meals.forEach {
                     items.add(ListItem.MealItem(it))
                 }
@@ -72,7 +76,7 @@ class DayOverview : Fragment() {
     private class ListExampleAdapter(val sList: List<ListItem>) : RecyclerView.Adapter<ListRowHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ListRowHolder {
             val context = parent?.context
-            val rowView = when(viewType) {
+            val rowView = when (viewType) {
                 1 -> LayoutInflater.from(context).inflate(R.layout.list_row, parent, false)
                 else -> LayoutInflater.from(context).inflate(R.layout.list_header_row, parent, false)
             }
@@ -85,7 +89,7 @@ class DayOverview : Fragment() {
         }
 
         override fun getItemViewType(position: Int): Int {
-            return when(sList[position]) {
+            return when (sList[position]) {
                 is DayOverview.ListItem.HeaderItem -> 0
                 is DayOverview.ListItem.MealItem -> 1
             }
@@ -93,10 +97,10 @@ class DayOverview : Fragment() {
 
         override fun onBindViewHolder(holder: ListRowHolder?, position: Int) {
             val item = sList[position]
-            when(item) {
+            when (item) {
                 is ListItem.HeaderItem -> {
                     holder?.headerClosedInfo?.visibility = View.GONE
-                    when(item.line) {
+                    when (item.line) {
                         is Line.OpenLine -> holder?.lineTitle?.text = item.line.getNiceName()
                         is Line.ClosedLine -> {
                             holder?.lineTitle?.text = item.line.getNiceName()
@@ -114,11 +118,13 @@ class DayOverview : Fragment() {
                             .map { it.getNiceName(context.resources) }
                             .joinToString(",")
                     holder.price?.text = item.meal.price.showPrice(holder.price!!.context)
-                    holder.mealContainer?.alpha = when (item.meal.containsBadAdditives(context) || item.meal.containsBadProperties(context)) {
-                        true -> 0.2f
-                        else -> 1.0f
+                    val unwantedFoodHandling = PreferenceManager.getDefaultSharedPreferences(context).getString("unwanted_food_handling", "greyed_out")
+
+                    when (item.meal.containsBadAdditives(context) || item.meal.containsBadProperties(context)) {
+                        true -> holder.mealContainer?.alpha = if (unwantedFoodHandling == "greyed_out")  0.2f else 1.0f
+                        else -> holder.mealContainer?.alpha = 1.0f
                     }
-                    holder.additives?.visibility = when(PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_additives", true)) {
+                    holder.additives?.visibility = when (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_additives", true)) {
                         true -> View.VISIBLE
                         else -> View.GONE
                     }
@@ -127,29 +133,29 @@ class DayOverview : Fragment() {
 
         }
 
-
-
     }
 
     private sealed class ListItem {
         class HeaderItem(val line: Line) : ListItem()
-
         class MealItem(val meal: Meal) : ListItem()
     }
 
-
     private class ListRowHolder(val row: View?) : RecyclerView.ViewHolder(row) {
         val mealName: TextView? = row?.findViewById(R.id.list_row_meal)
-        val mealDesc: TextView?  = row?.findViewById(R.id.list_row_dish)
+        val mealDesc: TextView? = row?.findViewById(R.id.list_row_dish)
         val lineTitle: TextView? = row?.findViewById(R.id.list_header_row_title)
         val additives: TextView? = row?.findViewById(R.id.list_row_additives)
         val price: TextView? = row?.findViewById(R.id.list_row_price)
-        val mealContainer : View?  = row?.findViewById(R.id.list_row_meal_container)
-        val headerClosedInfo : TextView? = row?.findViewById(R.id.list_header_closed_info)
+        val mealContainer: View? = row?.findViewById(R.id.list_row_meal_container)
+        val headerClosedInfo: TextView? = row?.findViewById(R.id.list_header_closed_info)
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        adapter.notifyDataSetChanged()
     }
 
     companion object {
-        val DAY = "de.csicar.mensaplan.DayOverview.DAY"
-        val CANTEEN = "de.csicar.mensaplan.DayOverview.CANTEEN"
+        const val DAY = "de.csicar.mensaplan.DayOverview.DAY"
+        const val CANTEEN = "de.csicar.mensaplan.DayOverview.CANTEEN"
     }
-}// Required empty public constructor
+}

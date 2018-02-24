@@ -4,7 +4,7 @@
         android:key="price_group"
         android:entries="@array/pref_price_group_titles"
         android:entryValues="@array/pref_price_group_values"
-        android:title="Price Group"
+        android:title="@string/pref_price_group"
         />
     <SwitchPreference
         android:defaultValue="true"
@@ -12,18 +12,25 @@
         android:summary="@string/pref_description_show_additives"
         android:title="@string/pref_show_additives" />
 
+    <ListPreference
+        android:defaultValue="greyed_out"
+        android:entries="@array/pref_unwanted_food_handling_titles"
+        android:entryValues="@array/pref_unwanted_food_handling_values"
+        android:key="unwanted_food_handling"
+        android:title="@string/pref_food_handling" />
+
     <MultiSelectListPreference
         android:key="food_additives"
-        android:title="Wähle Allergene"
-        android:summary="Gerichte, die gewählte Allergene enthalten werden ausgegraut angezeigt"
+        android:title="@string/pref_food_additives_title"
+        android:summary="@string/pref_food_additives_summary"
         android:entries="@array/pref_additives_titles"
         android:entryValues="@array/pref_additives_values"
         />
 
     <MultiSelectListPreference
         android:key="food_properties"
-        android:title="Wähle Inhaltsstoffe"
-        android:summary="Gerichte, die gewählte Inhaltsstoffe enthalten werden ausgegraut angezeigt"
+        android:title="@string/pref_food_properties_title"
+        android:summary="@string/pref_food_properties_summary"
         android:entries="@array/pref_properties_titles"
         android:entryValues="@array/pref_properties_values"
         />

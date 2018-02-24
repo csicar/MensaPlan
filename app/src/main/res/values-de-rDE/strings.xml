@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MensaPlan</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_header_general">Allgemein</string>
+    <string name="pref_show_additives">Zeige Inhaltsstoffe</string>
+    <string name="pref_description_show_additives">sollen die Inhaltsstoffe zu jeden Gericht angezeit werden?</string>
+    <string name="pref_header_data_sync">Daten und Synchronisation</string>
+    <string name="title_activity_canteen_detail">Mensa Details</string>
+    <string name="pref_price_group">Preis-Gruppe</string>
+    <string name="pref_food_handling">Gericht-Darstellung</string>
+    <string name="pref_food_additives_title">Wähle deine Allergene</string>
+    <string name="pref_food_additives_summary">Gerichte, die gewählte Allergene enthalten werden ausgegraut angezeigt</string>
+    <string name="pref_food_properties_title">Wähle ungewollte Inhaltsstoffe</string>
+    <string name="pref_food_properties_summary">Gerichte, die gewählte Inhaltsstoffe enthalten werden ausgegraut angezeigt</string>
+    <string name="navigation_drawer_open">Öffne Navigation</string>
+    <string name="navigation_drawer_close">Schließe Navigation</string>
+    <string name="pref_header_notifications">Benachrichtigungen</string>
+</resources>

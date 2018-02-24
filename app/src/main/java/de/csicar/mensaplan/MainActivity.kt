@@ -1,7 +1,10 @@
 package de.csicar.mensaplan
 
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -14,6 +17,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.text.format.DateUtils
+import android.util.Pair
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     val NAVBAR_ID = "de.csicar.mensaplan.NAVBAR_ID"
     var selectedCanteenName : String = "adenauerring"
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -44,7 +49,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toolbar.setOnClickListener {
             val intent = Intent(this, CanteenDetail::class.java)
             intent.putExtra(CanteenDetail.CANTEEN, selectedCanteenName)
-            startActivity(intent)
+
+            val options = ActivityOptions.makeSceneTransitionAnimation(this,
+                    Pair.create(toolbar!!, "appbar")
+            )
+
+            startActivity(intent, options.toBundle())
         }
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.day_overview_swipe_refresher)

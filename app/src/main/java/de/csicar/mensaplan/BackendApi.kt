@@ -10,7 +10,7 @@ import com.android.volley.toolbox.Volley
  */
 object BackendApi {
     val canteens = ArrayList<Canteen>()
-    private val url = "http://www.sw-ka.de/json_interface/canteen/?mensa=adenauerring"
+    private const val url = "http://www.sw-ka.de/json_interface/canteen/?mensa=adenauerring"
     private val updateListeners = ArrayList<Response.Listener<List<Canteen>>>()
 
     fun onUpdate(listener: Response.Listener<List<Canteen>>) {

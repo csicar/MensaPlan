@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_unwanted_food_handling_titles">
+        <item>Grey Out</item>
+        <item>Display normal</item>
+    </string-array>
+    <string-array name="pref_unwanted_food_handling_values">
+        <item>greyed_out</item>
+        <item>display_normal</item>
+    </string-array>
+
+    <string-array name="pref_price_group_titles">
+        <item>Student</item>
+        <item>Gäste</item>
+        <item>Bedienstete</item>
+        <item>Schüler</item>
+    </string-array>
+    <string-array name="pref_price_group_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="pref_additives_titles">
+        <item>Glutenhaltiges Getreide</item>
+        <item>Weizen</item>
+        <item>Roggen</item>
+        <item>Gerste</item>
+        <item>Hafer</item>
+        <item>Dinkel</item>
+        <item>Kamut</item>
+        <item>Schalenfrüchte / Nüsse</item>
+        <item>Mandeln</item>
+        <item>Haselnüsse</item>
+        <item>Walnüsse</item>
+        <item>Cashewnüsse</item>
+        <item>Pekanüsse</item>
+        <item>Paranüsse</item>
+        <item>Pistazie</item>
+        <item>Queenslandnüsse/ Macadamianüsse</item>
+        <item>Eier</item>
+        <item>Erdnüsse</item>
+        <item>Soja</item>
+        <item>Senf</item>
+        <item>Krebstiere</item>
+        <item>Fisch</item>
+        <item>Milch / Laktose</item>
+        <item>Sellerie</item>
+        <item>Schwefeldioxid / Sulfit</item>
+        <item>Sesam</item>
+        <item>Lupine</item>
+        <item>Weichtiere</item>
+    </string-array>
+    <string-array name="pref_additives_values">
+        <item>Gl</item>
+        <item>We</item>
+        <item>Ro</item>
+        <item>Ge</item>
+        <item>Ha</item>
+        <item>Di</item>
+        <item>Ka</item>
+        <item>Nu</item>
+        <item>Ma</item>
+        <item>Ha</item>
+        <item>Wa</item>
+        <item>Ca</item>
+        <item>Pe</item>
+        <item>Pa</item>
+        <item>Pi</item>
+        <item>Qu</item>
+        <item>Ei</item>
+        <item>Er</item>
+        <item>So</item>
+        <item>Sn</item>
+        <item>Kr</item>
+        <item>Fi</item>
+        <item>ML</item>
+        <item>Se</item>
+        <item>Sf</item>
+        <item>Sa</item>
+        <item>Lu</item>
+        <item>We</item>
+    </string-array>
+
+    <string-array name="pref_properties_titles">
+        <item>Bio</item>
+        <item>Fish</item>
+        <item>Schwein</item>
+        <item>Schwein aus artgerechter Tierhaltung</item>
+        <item>Schweinefleisch</item>
+        <item>Schweinefleisch aus artgerechter Tierhaltung</item>
+        <item>Vegan</item>
+        <item>Vegeratisch</item>
+        <item>Mensa Vital</item>
+    </string-array>
+    <string-array name="pref_properties_values">
+        <item>bio</item>
+        <item>fish</item>
+        <item>pork</item>
+        <item>pork_aw</item>
+        <item>cow</item>
+        <item>cow_aw</item>
+        <item>vegan</item>
+        <item>veg</item>
+        <item>mensa_vit</item>
+    </string-array>
+</resources>
