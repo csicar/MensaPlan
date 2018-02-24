@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_unwanted_food_handling_titles">
+    <string-array name="pref_unwanted_food_handling_titles" translatable="false">
         <item>Grey Out</item>
         <item>Display normal</item>
     </string-array>
-    <string-array name="pref_unwanted_food_handling_values">
+    <string-array name="pref_unwanted_food_handling_values" translatable="false">
         <item>greyed_out</item>
         <item>display_normal</item>
     </string-array>
 
-    <string-array name="pref_price_group_titles">
+    <string-array name="pref_price_group_titles" translatable="false">
         <item>Student</item>
         <item>Gäste</item>
         <item>Bedienstete</item>
         <item>Schüler</item>
     </string-array>
-    <string-array name="pref_price_group_values">
+    <string-array name="pref_price_group_values" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
     </string-array>
 
-    <string-array name="pref_additives_titles">
+    <string-array name="pref_additives_titles" translatable="false">
         <item>Glutenhaltiges Getreide</item>
         <item>Weizen</item>
         <item>Roggen</item>
@@ -52,7 +52,7 @@
         <item>Lupine</item>
         <item>Weichtiere</item>
     </string-array>
-    <string-array name="pref_additives_values">
+    <string-array name="pref_additives_values" translatable="false">
         <item>Gl</item>
         <item>We</item>
         <item>Ro</item>
@@ -83,7 +83,7 @@
         <item>We</item>
     </string-array>
 
-    <string-array name="pref_properties_titles">
+    <string-array name="pref_properties_titles" translatable="false">
         <item>Bio</item>
         <item>Fish</item>
         <item>Schwein</item>
@@ -94,7 +94,7 @@
         <item>Vegeratisch</item>
         <item>Mensa Vital</item>
     </string-array>
-    <string-array name="pref_properties_values">
+    <string-array name="pref_properties_values" translatable="false">
         <item>bio</item>
         <item>fish</item>
         <item>pork</item>
