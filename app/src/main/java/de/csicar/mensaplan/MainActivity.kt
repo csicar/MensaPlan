@@ -6,6 +6,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -40,22 +41,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // select the canteen that should be shown
+        // lowest
+        selectedCanteenName = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("selected_canteen", "adenauerring")
         selectedCanteenName = savedInstanceState?.getString(CANTEEN) ?: selectedCanteenName
         selectedCanteenName = intent.getStringExtra(CANTEEN) ?: selectedCanteenName
+
+
         title = Canteen.getNiceNameFor(selectedCanteenName)
         setSupportActionBar(toolbar)
-
-
-        toolbar.setOnClickListener {
-            val intent = Intent(this, CanteenDetail::class.java)
-            intent.putExtra(CanteenDetail.CANTEEN, selectedCanteenName)
-
-            val options = ActivityOptions.makeSceneTransitionAnimation(this,
-                    Pair.create(toolbar!!, "appbar")
-            )
-
-            startActivity(intent, options.toBundle())
-        }
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.day_overview_swipe_refresher)
         swipeRefreshLayout.setOnRefreshListener {
@@ -181,6 +176,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
+                return true
+            }
+            R.id.action_canteen_info -> {
+                val intent = Intent(this, CanteenDetail::class.java)
+                intent.putExtra(CanteenDetail.CANTEEN, selectedCanteenName)
+
+                val options = ActivityOptions.makeSceneTransitionAnimation(this,
+                        Pair.create(toolbar!!, "appbar")
+                )
+
+                startActivity(intent, options.toBundle())
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

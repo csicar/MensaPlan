@@ -105,4 +105,21 @@
         <item>veg</item>
         <item>mensa_vit</item>
     </string-array>
+    <string-array name="canteen_titles">
+        <item>Mensa Hochschule Pforzheim</item>
+        <item>Mensa am Adenauer Ring</item>
+        <item>Mensa Molkestraße</item>
+        <item>Mensa Erzbergerstraße</item>
+        <item>Mensa Schloss Gottesaue</item>
+        <item>Mensa I Holzgarten (Stuttgart-Mitte)</item>
+    </string-array>
+    <string-array name="canteen_values">
+        <item>tiefenbronner</item>
+        <item>adenauerring</item>
+        <item>moltke</item>
+        <item>erzberger</item>
+        <item>gottesaue</item>
+        <item>holzgarten</item>
+    </string-array>
+
 </resources>

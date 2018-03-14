@@ -1,5 +1,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
+        android:defaultValue="adenauerring"
+        android:key="selected_canteen"
+        android:entries="@array/canteen_titles"
+        android:entryValues="@array/canteen_values"
+        android:title="Selected Canteen"
+        />
+    <ListPreference
         android:defaultValue="1"
         android:key="price_group"
         android:entries="@array/pref_price_group_titles"
