@@ -6,10 +6,10 @@ import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.android.volley.Response
 
@@ -23,7 +23,7 @@ import com.android.volley.Response
  * create an instance of this fragment.
  */
 class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListener {
-    private lateinit var adapter: ListExampleAdapter
+    private lateinit var adapter: ListRowAdapter
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_day_overview, container, false)
@@ -38,7 +38,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         recyclerView.layoutManager = LinearLayoutManager(context)
 
 
-        adapter = ListExampleAdapter(items)
+        adapter = ListRowAdapter(items)
 
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -52,7 +52,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         return view
     }
 
-    private fun updateItems(canteens: List<Canteen>, dayIndex: Int, canteenName: String, items: MutableList<ListItem>, adapter: ListExampleAdapter) {
+    private fun updateItems(canteens: List<Canteen>, dayIndex: Int, canteenName: String, items: MutableList<ListItem>, adapter: ListRowAdapter) {
         val canteenValue = canteens.find { it.name == canteenName }
         if (canteenValue == null) {
             adapter.notifyDataSetChanged()
@@ -73,7 +73,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         adapter.notifyDataSetChanged()
     }
 
-    private class ListExampleAdapter(val sList: List<ListItem>) : RecyclerView.Adapter<ListRowHolder>() {
+    private class ListRowAdapter(val sList: List<ListItem>) : RecyclerView.Adapter<ListRowHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ListRowHolder {
             val context = parent?.context
             val rowView = when (viewType) {
@@ -92,6 +92,15 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
             return when (sList[position]) {
                 is DayOverview.ListItem.HeaderItem -> 0
                 is DayOverview.ListItem.MealItem -> 1
+            }
+        }
+
+        fun setDisplayedImages(properties: List<MealProperty>, holder: ListRowHolder) {
+            holder.images.forEach {
+                it.value?.visibility = when(properties.contains(it.key)) {
+                    true -> View.VISIBLE
+                    false -> View.GONE
+                }
             }
         }
 
@@ -114,9 +123,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
                     val context = holder?.row!!.context
                     holder.mealName?.text = item.meal.meal
                     holder.mealDesc?.text = item.meal.dish
-                    holder.additives?.text = item.meal.additives.joinToString(", ") + " " + item.meal.properties
-                            .map { it.getNiceName(context.resources) }
-                            .joinToString(",")
+                    holder.additives?.text = item.meal.additives.joinToString(", ")
                     holder.price?.text = item.meal.price.showPrice(holder.price!!.context)
                     val unwantedFoodHandling = PreferenceManager.getDefaultSharedPreferences(context).getString("unwanted_food_handling", "greyed_out")
 
@@ -124,6 +131,8 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
                         true -> holder.mealContainer?.alpha = if (unwantedFoodHandling == "greyed_out")  0.2f else 1.0f
                         else -> holder.mealContainer?.alpha = 1.0f
                     }
+
+                    setDisplayedImages(item.meal.properties, holder)
                     holder.additives?.visibility = when (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_additives", true)) {
                         true -> View.VISIBLE
                         else -> View.GONE
@@ -148,6 +157,18 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         val price: TextView? = row?.findViewById(R.id.list_row_price)
         val mealContainer: View? = row?.findViewById(R.id.list_row_meal_container)
         val headerClosedInfo: TextView? = row?.findViewById(R.id.list_header_closed_info)
+
+        val images: Map<MealProperty, ImageView?> = mapOf(
+                MealProperty.BIO to row?.findViewById(R.id.list_row_bio),
+                MealProperty.PORK to row?.findViewById(R.id.list_row_pig),
+                MealProperty.PORK_AW to row?.findViewById(R.id.list_row_pig_a),
+                MealProperty.COW to row?.findViewById(R.id.list_row_rind),
+                MealProperty.COW_AW to row?.findViewById(R.id.list_row_rind_a),
+                MealProperty.FISH to row?.findViewById(R.id.list_row_fisch),
+                MealProperty.MENSA_VIT to row?.findViewById(R.id.list_row_vital),
+                MealProperty.VEG to row?.findViewById(R.id.list_row_vegetarian),
+                MealProperty.VEGAN to row?.findViewById(R.id.list_row_vegan)
+        )
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
