@@ -203,6 +203,7 @@ class Price(val price1: Double, val price2: Double, val price3: Double, val pric
             else -> price1
         }
         val format = NumberFormat.getCurrencyInstance()
+        format.currency = Currency.getInstance("EUR")
 
         return "${showFlag()} ${format.format(price)}"
     }
