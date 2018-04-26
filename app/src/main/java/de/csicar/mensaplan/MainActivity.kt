@@ -23,6 +23,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ProgressBar
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import kotlinx.android.synthetic.main.activity_main.*
@@ -85,12 +86,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         var isInitialLoad = true
 
+        val initialLoaderProgressbar = findViewById<ProgressBar>(R.id.emptyLoadingProgressBar)
+        initialLoaderProgressbar.visibility = View.VISIBLE
         refreshFromBackend()
         BackendApi.onUpdate(Response.Listener {
             pagerAdapter.notifyDataSetChanged()
             swipeRefreshLayout.isRefreshing = false
             if (isInitialLoad) {
                 selectTodaysPane(pagerAdapter, selectedCanteenName)
+                initialLoaderProgressbar.visibility = View.GONE
                 isInitialLoad = false
             }
         })
