@@ -20,6 +20,8 @@ Build
 $ gradlew assembleDebug
 ```
 
+apk can be found in `app/build/outputs/apk/debug/`
+
 Card-Reading-Details
 --------------------
 
