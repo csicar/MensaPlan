@@ -1,7 +1,9 @@
 MensaPlan
 =========
 
-![build](https://circleci.com/gh/csicar/MensaPlan.svg?style=shield&circle-token=0ef461774a7b8c3f831e1e25874f4d5d7c657798r)
+[
+	![build](https://circleci.com/gh/csicar/MensaPlan.svg?style=shield&circle-token=0ef461774a7b8c3f831e1e25874f4d5d7c657798r)
+](https://circleci.com/gh/csicar/MensaPlan)
 
 Features
 --------
