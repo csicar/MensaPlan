@@ -28,6 +28,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -116,17 +117,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         selectedCanteenName = savedInstanceState.getString(CANTEEN)
     }
 
+
+    /**
+     * selects the pane for today or if for today there is no pane available shows the next one
+     * in the future
+     */
     private fun selectTodaysPane(pagerAdapter: PagerAdapter, selectedCanteenName: String) {
-        // select pane that matches today, if available
         findViewById<ViewPager>(R.id.day_overview_pager).apply {
             adapter = pagerAdapter
 
             val canteen = BackendApi.canteens.find {
                 it.name == selectedCanteenName
             }
-            currentItem = canteen?.days?.indexOfFirst {
-                DateUtils.isToday(it.date.time)
-            } ?: 0
+            val now = Date()
+            currentItem = canteen?.days?.withIndex()
+                    // remove elements before today
+                    ?.filter { it.value.date.let { it.after(now) || DateUtils.isToday(it.time) }}
+                    // select the element that is the closest to now
+                    ?.minBy { it.value.date.time-now.time }
+                    // get it's index
+                    ?.index
+                ?: 0
         }
     }
 
