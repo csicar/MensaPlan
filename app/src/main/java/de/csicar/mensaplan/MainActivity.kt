@@ -79,8 +79,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
-
-        nav_view.setCheckedItem(intent.getIntExtra(NAVBAR_ID, R.id.canteen_adenauerring))
+        nav_view.setCheckedItem(navigationIdCanteenNameMapping.entries.find { it.value == selectedCanteenName }?.key ?: R.id.canteen_adenauerring)
 
 
         val pagerAdapter = DayPagesAdapter(selectedCanteenName, supportFragmentManager)
@@ -208,55 +207,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.canteen_tiefenbronner -> {
-                // Handle the camera action
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra(CANTEEN, "tiefenbronner")
-                    putExtra(NAVBAR_ID, item.itemId)
-                }
-
-                startActivity(intent)
-            }
-            R.id.canteen_adenauerring -> {
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra(CANTEEN, "adenauerring")
-                    putExtra(NAVBAR_ID, item.itemId)
-                }
-
-                startActivity(intent)
-            }
-            R.id.canteen_moltke -> {
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra(CANTEEN, "moltke")
-                    putExtra(NAVBAR_ID, item.itemId)
-                }
-                startActivity(intent)
-            }
-            R.id.canteen_erzberger -> {
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra(CANTEEN, "erzberger")
-                    putExtra(NAVBAR_ID, item.itemId)
-                }
-                startActivity(intent)
-            }
-            R.id.canteen_gottesaue -> {
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra(CANTEEN, "gottesaue")
-                    putExtra(NAVBAR_ID, item.itemId)
-                }
-                startActivity(intent)
-            }
-            R.id.canteen_holzgarten -> {
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra(CANTEEN, "holzgarten")
-                    putExtra(NAVBAR_ID, item.itemId)
-                }
-                startActivity(intent)
-            }
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtra(CANTEEN, navigationIdCanteenNameMapping.get(item.itemId))
+            putExtra(NAVBAR_ID, item.itemId)
         }
+        startActivity(intent)
+
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
