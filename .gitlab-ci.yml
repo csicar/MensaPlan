@@ -37,6 +37,7 @@ build:
   script:
     - ./gradlew assembleDebug
   artifacts:
+    name: build
     paths:
     - app/build/outputs/
 
