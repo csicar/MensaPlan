@@ -229,7 +229,7 @@ public class Wallet {
 
     public String getCardIssuer() {
         if (cardNumber == null) {
-            return "Studentenwerk Karlsruhe";
+            return "HS Pforzheim";
         } else if (cardNumber.startsWith("1580")) {
             return "KIT";
         } else if (cardNumber.startsWith("6760")) {
