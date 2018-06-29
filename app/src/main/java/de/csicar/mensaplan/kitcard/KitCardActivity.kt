@@ -1,9 +1,12 @@
 package de.csicar.mensaplan.kitcard
 
+import android.content.DialogInterface
 import android.nfc.Tag
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.TextView
 import de.csicar.mensaplan.R
 import kotlinx.android.synthetic.main.activity_kit_card.*
@@ -14,6 +17,8 @@ class KitCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kit_card)
         setSupportActionBar(toolbar)
+        title = "Mensa Guthaben"
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, packageManager.hasSystemFeature("com.nxp.mifare").toString(), Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
@@ -26,6 +31,15 @@ class KitCardActivity : AppCompatActivity() {
 
     private fun onTagInfo(cardInfo: Wallet?) {
         if (cardInfo == null) {
+            Log.v("csicar", "asd");
+            val errorDialog = android.support.v7.app.AlertDialog.Builder(this)
+            errorDialog.setTitle("Alles Kaputt!");
+            errorDialog.setMessage("Karte wurde nicht lang genug an den Leser gehalten")
+                    .setCancelable(false)
+                    .setPositiveButton("ok", { dialog, which -> this.finish() })
+
+            errorDialog.create()
+            errorDialog.show()
             return
         }
 
