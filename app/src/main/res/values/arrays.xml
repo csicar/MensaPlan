@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_unwanted_food_handling_titles" translatable="false">
-        <item>Grey Out</item>
-        <item>Display normal</item>
-    </string-array>
-    <string-array name="pref_unwanted_food_handling_values" translatable="false">
-        <item>greyed_out</item>
-        <item>display_normal</item>
-    </string-array>
-
     <string-array name="pref_price_group_titles" translatable="false">
         <item>@string/pref_price_group_titles_college_student</item>
         <item>@string/pref_price_group_titles_guest</item>

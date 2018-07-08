@@ -26,6 +26,8 @@
     <string name="pref_price_group_titles_government_employee">Bediensteter</string>
     <string name="pref_price_group_titles_school_student">Schüler</string>
 
+    <string name="pref_food_grey_out">Ungewollte Gerichte ausgrauen</string>
+
     <string name="pref_properties_titles_bio">Bio</string>
     <string name="pref_properties_titles_fish">Fisch</string>
     <string name="pref_properties_titles_pig">Schwein</string>

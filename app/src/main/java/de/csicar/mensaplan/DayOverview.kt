@@ -125,18 +125,15 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
                     holder.mealDesc?.text = item.meal.dish
                     holder.additives?.text = item.meal.additives.joinToString(", ")
                     holder.price?.text = item.meal.price.showPrice(holder.price!!.context)
-                    val unwantedFoodHandling = PreferenceManager.getDefaultSharedPreferences(context).getString("unwanted_food_handling", "greyed_out")
 
-                    when (item.meal.containsBadAdditives(context) || item.meal.containsBadProperties(context)) {
-                        true -> holder.mealContainer?.alpha = if (unwantedFoodHandling == "greyed_out")  0.2f else 1.0f
-                        else -> holder.mealContainer?.alpha = 1.0f
-                    }
+                    val greyOutUnwanted = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("unwanted_food_grey_out", true)
+                    val foodUnwanted = item.meal.containsBadAdditives(context) || item.meal.containsBadProperties(context);
+                    holder.mealContainer?.alpha = if (foodUnwanted && greyOutUnwanted) 0.2f else 1.0f
 
                     setDisplayedImages(item.meal.properties, holder)
-                    holder.additives?.visibility = when (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_additives", true)) {
-                        true -> View.VISIBLE
-                        else -> View.GONE
-                    }
+
+                    val showAdditives = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_additives", true)
+                    holder.additives?.visibility = if (showAdditives) View.VISIBLE else View.GONE
                 }
             }
 

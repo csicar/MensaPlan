@@ -39,6 +39,8 @@
     <string name="pref_price_group_titles_government_employee">government employee</string>
     <string name="pref_price_group_titles_school_student">school student</string>
 
+    <string name="pref_food_grey_out">Grey out unwanted food</string>
+
     <string name="pref_properties_titles_bio">bio</string>
     <string name="pref_properties_titles_fish">fish</string>
     <string name="pref_properties_titles_pig">pig</string>
