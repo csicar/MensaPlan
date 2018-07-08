@@ -39,11 +39,13 @@
     <string name="title_activity_canteen_detail">Canteen Details</string>
 
     <string name="title_activity_kit_card" translatable="false">KitCard</string>
+    <string name="pref_selected_canteen">Selected Canteen</string>
     <string name="pref_price_group">Price Group</string>
     <string name="pref_food_handling">Food Display Settings</string>
     <string name="pref_food_additives_title">Choose your allergies</string>
     <string name="pref_food_properties_title">Choose your unwanted Additives</string>
     <string name="pref_food_properties_summary">Meals containing these additives will be greyed-out</string>
     <string name="pref_food_additives_summary">Meals containing these will be greyed-out</string>
+    <string name="pref_website_and_code_link">Website and Code</string>
     <string name="canteen_info_action_text">Canteen Info</string>
 </resources>

@@ -4,7 +4,7 @@
         android:key="selected_canteen"
         android:entries="@array/canteen_titles"
         android:entryValues="@array/canteen_values"
-        android:title="Selected Canteen"
+        android:title="@string/pref_selected_canteen"
         />
     <ListPreference
         android:defaultValue="1"
@@ -43,7 +43,7 @@
         />
 
     <PreferenceScreen
-        android:title="Website and Code"
+        android:title="@string/pref_website_and_code_link"
         android:key="code_info">
         <intent
             android:action="android.intent.action.VIEW"

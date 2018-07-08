@@ -20,7 +20,7 @@
     <style name="viewPagerTitleStrip">
         <item name="android:textColor">@color/titleStripTextColor</item>
         <item name="android:background">@color/colorPrimaryDark</item>
-        <item name="android:paddingTop">8dp</item>
+        <item name="android:padding">4dp</item>
     </style>
 
 
