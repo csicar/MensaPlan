@@ -47,5 +47,49 @@
     <string name="pref_food_properties_summary">Meals containing these additives will be greyed-out</string>
     <string name="pref_food_additives_summary">Meals containing these will be greyed-out</string>
     <string name="pref_website_and_code_link">Website and Code</string>
+
+    <string name="pref_price_group_titles_college_student">college student</string>
+    <string name="pref_price_group_titles_guest">guest</string>
+    <string name="pref_price_group_titles_government_employee">government employee</string>
+    <string name="pref_price_group_titles_school_student">school student</string>
+
+    <string name="pref_properties_titles_bio">bio</string>
+    <string name="pref_properties_titles_fish">fish</string>
+    <string name="pref_properties_titles_pig">pig</string>
+    <string name="pref_properties_titles_ethical_pig">pig from ethical husbandry</string>
+    <string name="pref_properties_titles_pig_meat">pig meat</string>
+    <string name="pref_properties_titles_ethical_pig_meat">pig meat from ethical husbandry</string>
+    <string name="pref_properties_titles_vegan">vegan</string>
+    <string name="pref_properties_titles_vegetarian">vegetarian</string>
+
+    <string name="pref_additives_titles_grain_gluten">grain including gluten</string>
+    <string name="pref_additives_titles_wheat">wheat</string>
+    <string name="pref_additives_titles_rye">rye</string>
+    <string name="pref_additives_titles_barley">barley</string>
+    <string name="pref_additives_titles_oat">oat</string>
+    <string name="pref_additives_titles_spelt">spelt</string>
+    <string name="pref_additives_titles_kamut">kamut</string>
+    <string name="pref_additives_titles_nuts">nuts</string>
+    <string name="pref_additives_titles_almonds">almonds</string>
+    <string name="pref_additives_titles_hazelnuts">hazelnuts</string>
+    <string name="pref_additives_titles_walnuts">walnuts</string>
+    <string name="pref_additives_titles_cashews">cashews</string>
+    <string name="pref_additives_titles_pecans">pecans</string>
+    <string name="pref_additives_titles_brazil_nut">brazil nut / para nut</string>
+    <string name="pref_additives_titles_pistachios">pistachios</string>
+    <string name="pref_additives_titles_queensland_nuts">queensland nuts/ macadamia nuts</string>
+    <string name="pref_additives_titles_eggs">eggs</string>
+    <string name="pref_additives_titles_peanuts">peanuts</string>
+    <string name="pref_additives_titles_soy">soy</string>
+    <string name="pref_additives_titles_mustard">mustard</string>
+    <string name="pref_additives_titles_shellfish">shellfish</string>
+    <string name="pref_additives_titles_fish">fish</string>
+    <string name="pref_additives_titles_milk_lactose">milk / Lactose</string>
+    <string name="pref_additives_titles_celery">celery</string>
+    <string name="pref_additives_titles_sulphur_dioxide_sulphite">sulphur dioxide/ sulphite</string>
+    <string name="pref_additives_titles_sesame">sesame</string>
+    <string name="pref_additives_titles_lupine">lupine</string>
+    <string name="pref_additives_titles_mollusks">mollusks</string>
+
     <string name="canteen_info_action_text">Canteen Info</string>
 </resources>

@@ -10,10 +10,10 @@
     </string-array>
 
     <string-array name="pref_price_group_titles" translatable="false">
-        <item>Student</item>
-        <item>Gäste</item>
-        <item>Bedienstete</item>
-        <item>Schüler</item>
+        <item>@string/pref_price_group_titles_college_student</item>
+        <item>@string/pref_price_group_titles_guest</item>
+        <item>@string/pref_price_group_titles_government_employee</item>
+        <item>@string/pref_price_group_titles_school_student</item>
     </string-array>
     <string-array name="pref_price_group_values" translatable="false">
         <item>1</item>
@@ -23,34 +23,34 @@
     </string-array>
 
     <string-array name="pref_additives_titles" translatable="false">
-        <item>Glutenhaltiges Getreide</item>
-        <item>Weizen</item>
-        <item>Roggen</item>
-        <item>Gerste</item>
-        <item>Hafer</item>
-        <item>Dinkel</item>
-        <item>Kamut</item>
-        <item>Schalenfrüchte / Nüsse</item>
-        <item>Mandeln</item>
-        <item>Haselnüsse</item>
-        <item>Walnüsse</item>
-        <item>Cashewnüsse</item>
-        <item>Pekanüsse</item>
-        <item>Paranüsse</item>
-        <item>Pistazie</item>
-        <item>Queenslandnüsse/ Macadamianüsse</item>
-        <item>Eier</item>
-        <item>Erdnüsse</item>
-        <item>Soja</item>
-        <item>Senf</item>
-        <item>Krebstiere</item>
-        <item>Fisch</item>
-        <item>Milch / Laktose</item>
-        <item>Sellerie</item>
-        <item>Schwefeldioxid / Sulfit</item>
-        <item>Sesam</item>
-        <item>Lupine</item>
-        <item>Weichtiere</item>
+        <item>@string/pref_additives_titles_grain_gluten</item>
+        <item>@string/pref_additives_titles_wheat</item>
+        <item>@string/pref_additives_titles_rye</item>
+        <item>@string/pref_additives_titles_barley</item>
+        <item>@string/pref_additives_titles_oat</item>
+        <item>@string/pref_additives_titles_spelt</item>
+        <item>@string/pref_additives_titles_kamut</item>
+        <item>@string/pref_additives_titles_nuts</item>
+        <item>@string/pref_additives_titles_almonds</item>
+        <item>@string/pref_additives_titles_hazelnuts</item>
+        <item>@string/pref_additives_titles_walnuts</item>
+        <item>@string/pref_additives_titles_cashews</item>
+        <item>@string/pref_additives_titles_pecans</item>
+        <item>@string/pref_additives_titles_brazil_nut</item>
+        <item>@string/pref_additives_titles_pistachios</item>
+        <item>@string/pref_additives_titles_queensland_nuts</item>
+        <item>@string/pref_additives_titles_eggs</item>
+        <item>@string/pref_additives_titles_peanuts</item>
+        <item>@string/pref_additives_titles_soy</item>
+        <item>@string/pref_additives_titles_mustard</item>
+        <item>@string/pref_additives_titles_shellfish</item>
+        <item>@string/pref_additives_titles_fish</item>
+        <item>@string/pref_additives_titles_milk_lactose</item>
+        <item>@string/pref_additives_titles_celery</item>
+        <item>@string/pref_additives_titles_sulphur_dioxide_sulphite</item>
+        <item>@string/pref_additives_titles_sesame</item>
+        <item>@string/pref_additives_titles_lupine</item>
+        <item>@string/pref_additives_titles_mollusks</item>
     </string-array>
     <string-array name="pref_additives_values" translatable="false">
         <item>Gl</item>
@@ -84,14 +84,14 @@
     </string-array>
 
     <string-array name="pref_properties_titles" translatable="false">
-        <item>Bio</item>
-        <item>Fish</item>
-        <item>Schwein</item>
-        <item>Schwein aus artgerechter Tierhaltung</item>
-        <item>Schweinefleisch</item>
-        <item>Schweinefleisch aus artgerechter Tierhaltung</item>
-        <item>Vegan</item>
-        <item>Vegeratisch</item>
+        <item>@string/pref_properties_titles_bio</item>
+        <item>@string/pref_properties_titles_fish</item>
+        <item>@string/pref_properties_titles_pig</item>
+        <item>@string/pref_properties_titles_ethical_pig</item>
+        <item>@string/pref_properties_titles_pig_meat</item>
+        <item>@string/pref_properties_titles_ethical_pig_meat</item>
+        <item>@string/pref_properties_titles_vegan</item>
+        <item>@string/pref_properties_titles_vegetarian</item>
         <item>Mensa Vital</item>
     </string-array>
     <string-array name="pref_properties_values" translatable="false">
@@ -105,6 +105,7 @@
         <item>veg</item>
         <item>mensa_vit</item>
     </string-array>
+
     <string-array name="canteen_titles" translatable="false">
         <item>Mensa Hochschule Pforzheim</item>
         <item>Mensa am Adenauer Ring</item>

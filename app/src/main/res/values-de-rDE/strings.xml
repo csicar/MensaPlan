@@ -20,4 +20,47 @@
     <string name="navigation_drawer_close">Navigation schließen</string>
     <string name="pref_header_notifications">Benachrichtigungen</string>
     <string name="canteen_info_action_text">Mensa Informationen</string>
+
+    <string name="pref_price_group_titles_college_student">Student</string>
+    <string name="pref_price_group_titles_guest">Gast</string>
+    <string name="pref_price_group_titles_government_employee">Bediensteter</string>
+    <string name="pref_price_group_titles_school_student">Schüler</string>
+
+    <string name="pref_properties_titles_bio">Bio</string>
+    <string name="pref_properties_titles_fish">Fisch</string>
+    <string name="pref_properties_titles_pig">Schwein</string>
+    <string name="pref_properties_titles_ethical_pig">Schwein aus artgerechter Tierhaltung</string>
+    <string name="pref_properties_titles_pig_meat">Schweinefleisch</string>
+    <string name="pref_properties_titles_ethical_pig_meat">Schweinefleisch aus artgerechter Tierhaltung</string>
+    <string name="pref_properties_titles_vegan">Vegan</string>
+    <string name="pref_properties_titles_vegetarian">Vegeratisch</string>
+
+    <string name="pref_additives_titles_grain_gluten">Glutenhaltiges Getreide</string>
+    <string name="pref_additives_titles_wheat">Weizen</string>
+    <string name="pref_additives_titles_rye">Roggen</string>
+    <string name="pref_additives_titles_barley">Gerste</string>
+    <string name="pref_additives_titles_oat">Hafer</string>
+    <string name="pref_additives_titles_spelt">Dinkel</string>
+    <string name="pref_additives_titles_kamut">Kamut</string>
+    <string name="pref_additives_titles_nuts">Schalenfrüchte / Nüsse</string>
+    <string name="pref_additives_titles_almonds">Mandeln</string>
+    <string name="pref_additives_titles_hazelnuts">Haselnüsse</string>
+    <string name="pref_additives_titles_walnuts">Walnüsse</string>
+    <string name="pref_additives_titles_cashews">Cashewnüsse</string>
+    <string name="pref_additives_titles_pecans">Pekanüsse</string>
+    <string name="pref_additives_titles_brazil_nut">Paranüsse</string>
+    <string name="pref_additives_titles_pistachios">Pistazie</string>
+    <string name="pref_additives_titles_queensland_nuts">Queenslandnüsse/ Macadamianüsse</string>
+    <string name="pref_additives_titles_eggs">Eier</string>
+    <string name="pref_additives_titles_peanuts">Erdnüsse</string>
+    <string name="pref_additives_titles_soy">Soja</string>
+    <string name="pref_additives_titles_mustard">Senf</string>
+    <string name="pref_additives_titles_shellfish">Krebstiere</string>
+    <string name="pref_additives_titles_fish">Fisch</string>
+    <string name="pref_additives_titles_milk_lactose">Milch / Laktose</string>
+    <string name="pref_additives_titles_celery">Sellerie</string>
+    <string name="pref_additives_titles_sulphur_dioxide_sulphite">Schwefeldioxid / Sulfit</string>
+    <string name="pref_additives_titles_sesame">Sesam</string>
+    <string name="pref_additives_titles_lupine">Lupine</string>
+    <string name="pref_additives_titles_mollusks">Weichtiere</string>
 </resources>
