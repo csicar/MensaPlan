@@ -13,7 +13,7 @@
     <string name="pref_header_general">General</string>
 
     <string name="pref_show_additives">Show additives</string>
-    <string name="pref_description_show_additives">should a list of additives (Milk, etc.) be shown for each meal?
+    <string name="pref_description_show_additives">Should a list of additives (Milk, etc.) be shown for each meal?
     </string>
 
     <!--<string-array name="pref_canteen_titles">
@@ -39,11 +39,11 @@
     <string name="title_activity_canteen_detail">Canteen Details</string>
 
     <string name="title_activity_kit_card" translatable="false">KitCard</string>
-    <string name="pref_selected_canteen">Selected Canteen</string>
-    <string name="pref_price_group">Price Group</string>
+    <string name="pref_selected_canteen">Selected canteen</string>
+    <string name="pref_price_group">Price group</string>
     <string name="pref_food_handling">Food Display Settings</string>
     <string name="pref_food_additives_title">Choose your allergies</string>
-    <string name="pref_food_properties_title">Choose your unwanted Additives</string>
+    <string name="pref_food_properties_title">Choose unwanted additives</string>
     <string name="pref_food_properties_summary">Meals containing these additives will be greyed-out</string>
     <string name="pref_food_additives_summary">Meals containing these will be greyed-out</string>
     <string name="pref_website_and_code_link">Website and Code</string>

@@ -4,8 +4,8 @@
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="pref_header_general">Allgemein</string>
-    <string name="pref_show_additives">Zeige Inhaltsstoffe</string>
-    <string name="pref_description_show_additives">sollen die Inhaltsstoffe zu jeden Gericht angezeit werden?</string>
+    <string name="pref_show_additives">Inhaltsstoffe anzeigen</string>
+    <string name="pref_description_show_additives">Sollen die Inhaltsstoffe zu jeden Gericht angezeit werden?</string>
     <string name="pref_header_data_sync">Daten und Synchronisation</string>
     <string name="title_activity_canteen_detail">Mensa Details</string>
     <string name="pref_selected_canteen">Ausgewählte Mensa</string>
@@ -16,8 +16,8 @@
     <string name="pref_food_properties_title">Wähle ungewollte Inhaltsstoffe</string>
     <string name="pref_food_properties_summary">Gerichte, die gewählte Inhaltsstoffe enthalten werden ausgegraut angezeigt</string>
     <string name="pref_website_and_code_link">Website und Code</string>
-    <string name="navigation_drawer_open">Öffne Navigation</string>
-    <string name="navigation_drawer_close">Schließe Navigation</string>
+    <string name="navigation_drawer_open">Navigation öffnen</string>
+    <string name="navigation_drawer_close">Navigation schließen</string>
     <string name="pref_header_notifications">Benachrichtigungen</string>
     <string name="canteen_info_action_text">Mensa Informationen</string>
 </resources>
