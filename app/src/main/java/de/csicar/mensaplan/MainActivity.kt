@@ -58,10 +58,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         swipeRefreshLayout.setOnRefreshListener {
             refreshFromBackend()
         }
-        fab.setOnClickListener { view ->
-            swipeRefreshLayout.isRefreshing = true
-            BackendApi.refresh(this, Response.ErrorListener { showNetworkProblem(view, it) })
-        }
         val pager = findViewById<ViewPager>(R.id.day_overview_pager)
 
         // Fix for: When swiping left to right: the refresh action get's triggered, making it impossible to
@@ -141,7 +137,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun refreshFromBackend() {
-        BackendApi.refresh(this, Response.ErrorListener { showNetworkProblem(fab, it) })
+        BackendApi.refresh(this, Response.ErrorListener {
+            showNetworkProblem(findViewById(R.id.day_overview_swipe_refresher), it)
+        })
     }
 
     private fun showNetworkProblem(view: View, error: VolleyError) {
