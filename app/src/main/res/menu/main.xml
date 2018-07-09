@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_canteen_info"
-        android:icon="@drawable/ic_info_black_24dp"
+        android:icon="@drawable/ic_info_white_24dp"
         android:title="@string/canteen_info_action_text"
         app:showAsAction="ifRoom" />
     <item
