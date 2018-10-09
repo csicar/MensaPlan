@@ -62,7 +62,19 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
             is ListItem.MealItem -> {
                     searchWeb(item.meal.meal + item.meal.dish)
             }
+            is ListItem.HeaderItem -> {
+                shareText("Ich gehe zu ${item.line.getNiceName()}")
+            }
         }
+    }
+
+    private fun shareText(text: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(sendIntent, "Share '$text' with"))
     }
 
     private fun searchWeb(query: String) {
