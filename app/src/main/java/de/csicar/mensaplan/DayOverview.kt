@@ -1,6 +1,9 @@
 package de.csicar.mensaplan
 
+import android.app.SearchManager
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
@@ -12,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.android.volley.Response
+import java.net.URLEncoder
 
 
 /**
@@ -38,7 +42,8 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         recyclerView.layoutManager = LinearLayoutManager(context)
 
 
-        adapter = ListRowAdapter(items)
+
+        adapter = ListRowAdapter(items, this::onListItemClick)
 
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -50,6 +55,29 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         })
 
         return view
+    }
+
+    private fun onListItemClick(item: ListItem, position: Int, view: View) {
+        when(item) {
+            is ListItem.MealItem -> {
+                    searchWeb(item.meal.meal + item.meal.dish)
+            }
+        }
+    }
+
+    private fun searchWeb(query: String) {
+        val searchIntent = Intent(Intent.ACTION_WEB_SEARCH).apply {
+            putExtra(SearchManager.QUERY, query)
+        }
+
+        if (searchIntent.resolveActivity(this.context.packageManager) != null) {
+            startActivity(searchIntent)
+        } else {
+            val escapedQuery = URLEncoder.encode(query, "UTF-8")
+            val uri = Uri.parse("http://www.google.com/search?q=$escapedQuery")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
     }
 
     private fun updateItems(canteens: List<Canteen>, dayIndex: Int, canteenName: String, items: MutableList<ListItem>, adapter: ListRowAdapter) {
@@ -73,7 +101,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         adapter.notifyDataSetChanged()
     }
 
-    private class ListRowAdapter(val sList: List<ListItem>) : RecyclerView.Adapter<ListRowHolder>() {
+    private class ListRowAdapter(val sList: List<ListItem>, val onItemClickListener: (ListItem, Int, View) -> Unit) : RecyclerView.Adapter<ListRowHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ListRowHolder {
             val context = parent?.context
             val rowView = when (viewType) {
@@ -136,6 +164,8 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
                     holder.additives?.visibility = if (showAdditives) View.VISIBLE else View.GONE
                 }
             }
+            holder?.row?.setOnClickListener { onItemClickListener(item, position, it) }
+
 
         }
 
