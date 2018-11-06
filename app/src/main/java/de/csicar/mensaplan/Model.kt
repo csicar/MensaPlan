@@ -87,7 +87,10 @@ sealed class Line(val name: String) {
                 "gut" to "Gut & Günstig",
                 "gut2" to "Gut & Günstig 2",
                 "buffet" to "Buffet",
-                "curryqueen" to "[Kœri]werk")
+                "curryqueen" to "[Kœri]werk",
+                "pizza" to "[pizza]werk Pizza",
+                "pasta" to "[pizza]werk Pasta",
+                "salat_dessert" to "[pizza]werk Salate / Vorspeisen")
         fun linesFromJson(content: JSONObject) : List<Line> {
             val lines = mutableListOf<Line>()
             content.keys().forEach {
