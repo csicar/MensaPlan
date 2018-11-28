@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     val NAVBAR_ID = "de.csicar.mensaplan.NAVBAR_ID"
     var selectedCanteenName : String = "adenauerring"
 
+    private lateinit var pagerAdapter : DayPagesAdapter
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setCheckedItem(navigationIdCanteenNameMapping.entries.find { it.value == selectedCanteenName }?.key ?: R.id.canteen_adenauerring)
 
 
-        val pagerAdapter = DayPagesAdapter(selectedCanteenName, supportFragmentManager)
+        pagerAdapter = DayPagesAdapter(selectedCanteenName, supportFragmentManager)
 
         var isInitialLoad = true
 
@@ -95,6 +97,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        selectTodaysPane(pagerAdapter, selectedCanteenName)
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
