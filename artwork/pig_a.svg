@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg6637"
+   width="200"
+   height="170"
+   viewBox="0 0 200 170"
+   sodipodi:docname="pig_a.svg"
+   inkscape:version="0.92.2 2405546, 2018-03-11">
+  <metadata
+     id="metadata6643">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6641" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="1005"
+     id="namedview6639"
+     showgrid="false"
+     inkscape:zoom="1.9632612"
+     inkscape:cx="-3.1028853"
+     inkscape:cy="96.137634"
+     inkscape:window-x="0"
+     inkscape:window-y="45"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg6637" />
+  <g
+     transform="matrix(0.76192922,0,0,0.76192922,18.410731,14.931258)"
+     id="g7197">
+    <use
+       height="100%"
+       width="100%"
+       transform="matrix(-1,0,0,1,160.44732,0)"
+       id="use6512"
+       xlink:href="#path2798"
+       y="0"
+       x="0" />
+    <path
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0"
+       id="path2798"
+       d="M 80.223661,32.728402 C 94.539928,32.9015 108.60157,35.877887 118.17073,44.188925 166.2269,8.0889235 172.96768,155.5691 130.14061,57.941552 155.52822,105.72773 119.8527,142.71875 80.223661,142.24007"
+       style="fill:#fcdec6;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:9.39999962;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <ellipse
+       cx="80.350998"
+       cy="97.289352"
+       rx="21.902332"
+       ry="18.973532"
+       id="path6514"
+       style="fill:#f19daf;fill-opacity:1;stroke:none;stroke-width:9.84574986;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none" />
+    <ellipse
+       ry="5.5826268"
+       rx="6.1904135"
+       cy="72.304031"
+       cx="57.154396"
+       id="path6520"
+       style="fill:#1e1613;fill-opacity:1;stroke:none;stroke-width:15.39353371;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none" />
+    <ellipse
+       ry="5.5826268"
+       rx="6.1904135"
+       cy="72.458214"
+       cx="103.65406"
+       id="path6520-3"
+       style="fill:#1e1613;fill-opacity:1;stroke:none;stroke-width:15.39353371;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none" />
+    <ellipse
+       ry="6.5280714"
+       rx="3.1064622"
+       cy="97.42585"
+       cx="70.840836"
+       id="path6520-6"
+       style="fill:#1e1613;fill-opacity:1;stroke:none;stroke-width:11.79192448;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none" />
+    <ellipse
+       ry="6.5280714"
+       rx="3.1064622"
+       cy="97.200745"
+       cx="90.852753"
+       id="path6520-6-7"
+       style="fill:#1e1613;fill-opacity:1;stroke:none;stroke-width:11.79192448;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none" />
+  </g>
+  <circle
+     style="fill:none;fill-opacity:1;stroke:#99bf1e;stroke-width:7.03947926;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path7235"
+     cx="77.98275"
+     cy="78.376907"
+     r="74.188156" />
+</svg>

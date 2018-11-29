@@ -90,55 +90,55 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/pig" />
+            app:srcCompat="@drawable/ic_pig" />
 
         <ImageView
             android:id="@+id/list_row_pig_a"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/pig_a" />
+            app:srcCompat="@drawable/ic_pig_a" />
 
         <ImageView
             android:id="@+id/list_row_fisch"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/fisch" />
+            app:srcCompat="@drawable/ic_fisch" />
 
         <ImageView
             android:id="@+id/list_row_rind"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/rind" />
+            app:srcCompat="@drawable/ic_rind" />
 
         <ImageView
             android:id="@+id/list_row_rind_a"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/rind_a" />
+            app:srcCompat="@drawable/ic_rind_a" />
 
         <ImageView
             android:id="@+id/list_row_vegan"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/vegan" />
+            app:srcCompat="@drawable/ic_vegan" />
 
         <ImageView
             android:id="@+id/list_row_vegetarian"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/vegetarian" />
+            app:srcCompat="@drawable/ic_vegetarian" />
 
         <ImageView
             android:id="@+id/list_row_vital"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0"
-            app:srcCompat="@drawable/vital" />
+            app:srcCompat="@drawable/ic_vital" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
