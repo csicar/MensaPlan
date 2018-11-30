@@ -38,5 +38,4 @@ dependencies {
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'org.joda:joda-money:0.12'
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
 }
