@@ -4,5 +4,14 @@
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
 
-
+    <EditTextPreference
+        android:key="google_search_key"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Google Search Key" />
+    <EditTextPreference
+        android:key="google_search_cx"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Google Search CX" />
 </PreferenceScreen>

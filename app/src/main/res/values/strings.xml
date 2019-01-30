@@ -80,4 +80,6 @@
     <string name="pref_additives_titles_mollusks">mollusks</string>
 
     <string name="canteen_info_action_text">Canteen Info</string>
+    <string name="title_activity_meal_detail">Meal Info</string>
+
 </resources>

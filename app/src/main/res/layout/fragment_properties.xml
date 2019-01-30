@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MealPropertyFragment">
+
+    <LinearLayout
+        android:id="@+id/propertiesLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/list_row_additives"
+        app:layout_constraintStart_toEndOf="@+id/list_row_dish">
+
+        <ImageView
+            android:id="@+id/list_row_bio"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/bio" />
+
+        <ImageView
+            android:id="@+id/list_row_pig"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_pig" />
+
+        <ImageView
+            android:id="@+id/list_row_pig_a"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_pig_a" />
+
+        <ImageView
+            android:id="@+id/list_row_fisch"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_fisch" />
+
+        <ImageView
+            android:id="@+id/list_row_rind"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_rind" />
+
+        <ImageView
+            android:id="@+id/list_row_rind_a"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_rind_a" />
+
+        <ImageView
+            android:id="@+id/list_row_vegan"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_vegan" />
+
+        <ImageView
+            android:id="@+id/list_row_vegetarian"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_vegetarian" />
+
+        <ImageView
+            android:id="@+id/list_row_vital"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_vital" />
+    </LinearLayout>
+</FrameLayout>

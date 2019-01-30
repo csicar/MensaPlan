@@ -1,21 +1,21 @@
 package de.csicar.mensaplan
 
-import android.app.SearchManager
+import android.app.ActivityOptions
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.android.volley.Response
-import java.net.URLEncoder
+import com.google.gson.Gson
 
 
 /**
@@ -58,9 +58,14 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
     }
 
     private fun onListItemClick(item: ListItem, position: Int, view: View) {
-        when(item) {
+        when (item) {
             is ListItem.MealItem -> {
-                    searchWeb(item.meal.meal + item.meal.dish)
+                Log.v("adsasd", "onclick")
+                val intent = Intent(context, MealDetailActivity::class.java).apply {
+                    putExtra(MealDetailActivity.MEALDATA, Gson().toJson(item.meal, Meal::class.java))
+                }
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
+                //searchWeb(item.meal.meal + item.meal.dish)
             }
             is ListItem.HeaderItem -> {
                 shareText("Ich gehe zu ${item.line.getNiceName()}")
@@ -77,20 +82,6 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         startActivity(Intent.createChooser(sendIntent, "Share '$text' with"))
     }
 
-    private fun searchWeb(query: String) {
-        val searchIntent = Intent(Intent.ACTION_WEB_SEARCH).apply {
-            putExtra(SearchManager.QUERY, query)
-        }
-
-        if (searchIntent.resolveActivity(this.context.packageManager) != null) {
-            startActivity(searchIntent)
-        } else {
-            val escapedQuery = URLEncoder.encode(query, "UTF-8")
-            val uri = Uri.parse("http://www.google.com/search?q=$escapedQuery")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
-        }
-    }
 
     private fun updateItems(canteens: List<Canteen>, dayIndex: Int, canteenName: String, items: MutableList<ListItem>, adapter: ListRowAdapter) {
         val canteenValue = canteens.find { it.name == canteenName }
@@ -137,7 +128,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
 
         fun setDisplayedImages(properties: List<MealProperty>, holder: ListRowHolder) {
             holder.images.forEach {
-                it.value?.visibility = when(properties.contains(it.key)) {
+                it.value?.visibility = when (properties.contains(it.key)) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
