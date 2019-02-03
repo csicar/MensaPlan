@@ -16,7 +16,6 @@ class GoogleImageRequest(method: Int, url: String, val listener: Response.Listen
 
         val url = extractUrl(search)
         if (url == null) {
-            Log.v("asdasd url not found", search.toString())
             return Response.error(VolleyError(response))
         }
         return Response.success(url, HttpHeaderParser.parseCacheHeaders(response))

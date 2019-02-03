@@ -11,7 +11,6 @@ import com.android.volley.toolbox.Volley
 import java.net.URL
 
 class GoogleImageApi(val cx: String, val key: String) {
-    constructor(preferences: SharedPreferences) : this(preferences.getString("google_search_cx", ""), preferences.getString("google_search_key", ""))
 
 
     fun getRequestUrl(searchText: String): String {
@@ -31,7 +30,7 @@ class GoogleImageApi(val cx: String, val key: String) {
     fun fetch(context: Context, search: String, listener: Response.Listener<URL>, errorListener: Response.ErrorListener) {
         val queue = Volley.newRequestQueue(context)
         val shortenedSearch = search
-        val stringRequest = GoogleImageRequest(Request.Method.GET, getRequestUrl(shortenedSearch).also { Log.v("asdasd url", it) },
+        val stringRequest = GoogleImageRequest(Request.Method.GET, getRequestUrl(shortenedSearch),
                 Response.Listener {
                     listener.onResponse(it)
                 },

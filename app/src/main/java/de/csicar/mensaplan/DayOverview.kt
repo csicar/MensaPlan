@@ -60,7 +60,6 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
     private fun onListItemClick(item: ListItem, position: Int, view: View) {
         when (item) {
             is ListItem.MealItem -> {
-                Log.v("adsasd", "onclick")
                 val intent = Intent(context, MealDetailActivity::class.java).apply {
                     putExtra(MealDetailActivity.MEALDATA, Gson().toJson(item.meal, Meal::class.java))
                 }

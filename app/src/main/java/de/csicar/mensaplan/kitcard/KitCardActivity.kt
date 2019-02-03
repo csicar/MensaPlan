@@ -31,7 +31,6 @@ class KitCardActivity : AppCompatActivity() {
 
     private fun onTagInfo(cardInfo: Wallet?) {
         if (cardInfo == null) {
-            Log.v("csicar", "asd");
             val errorDialog = android.support.v7.app.AlertDialog.Builder(this)
             errorDialog.setTitle("Alles Kaputt!");
             errorDialog.setMessage("Karte wurde nicht lang genug an den Leser gehalten")

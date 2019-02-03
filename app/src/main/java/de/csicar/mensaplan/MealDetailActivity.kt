@@ -34,13 +34,9 @@ class MealDetailActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             searchWeb(meal.meal + " " + meal.dish)
         }
-        GoogleImageApi(PreferenceManager.getDefaultSharedPreferences(this)).fetch(this, meal.meal, Response.Listener {
-            Picasso.with(this).load(it.toExternalForm())
-                    .into(findViewById<ImageView>(R.id.mealImage))
-        }, Response.ErrorListener {
-            Snackbar.make(findViewById(R.id.contentPanel), it.toString(), 1000)
-            Log.v("asdasd", it.toString())
-        })
+
+        fetchImage(meal)
+
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -57,7 +53,23 @@ class MealDetailActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.dishTextView)?.text = meal.dish
         findViewById<TextView>(R.id.additives_text)?.text = meal.longAdditiveNames(this).joinToString { "${it.first} (${it.second}) " }
-        findViewById<TextView>(R.id.price_text)?.text = meal.price.showFlag() + (1..4).map { Price.priceGroupName(this, it) + " " + meal.price.showPrice(it) }.joinToString { it + " " }
+        findViewById<TextView>(R.id.price_text)?.text = meal.price.showFlag() + (1..4).map { Price.priceGroupName(this, it) + " " + meal.price.showPrice(it) }.joinToString { "$it " }
+    }
+
+    private fun fetchImage(meal: Meal) {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val googleCx = pref.getString("google_search_cx", "")
+        val googleKey = pref.getString("google_search_key", "")
+
+        if (googleCx == "" || googleKey == "") return
+
+        GoogleImageApi(googleCx, googleKey).fetch(this, meal.meal, Response.Listener {
+            Picasso.with(this).load(it.toExternalForm())
+                    .into(findViewById<ImageView>(R.id.mealImage))
+        }, Response.ErrorListener {
+            Snackbar.make(findViewById(R.id.toolbar), it.toString(), 1000)
+            Log.v("error", it.toString())
+        })
     }
 
     private fun getMealPropertyImages(): Map<MealProperty, ImageView> {

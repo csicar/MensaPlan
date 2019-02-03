@@ -15,11 +15,9 @@ class ReadCardTask(private val tag: Tag, private val callback: KFunction1<@Param
         val card = try {
             MifareClassic.get(tag) //TODO repair
         } catch (ex : NullPointerException) {
-            Log.v("aadd", "transformTag")
             MifareClassic.get(MifareUtils.repairTag(tag))
         }
         if (card == null) {
-            Log.v("aadd", "card == null")
             return null
         }
         val wallet = Wallet(card)
