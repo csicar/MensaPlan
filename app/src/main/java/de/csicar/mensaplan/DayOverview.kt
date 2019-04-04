@@ -8,7 +8,6 @@ import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +27,8 @@ import com.google.gson.Gson
  */
 class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var adapter: ListRowAdapter
+    private lateinit var canteenName: String
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_day_overview, container, false)
@@ -48,10 +49,11 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
         val day = arguments.getInt(DAY)
-        val canteenName = arguments.getString(CANTEEN)
-        updateItems(BackendApi.canteens, day, canteenName, items, adapter)
+        canteenName = arguments.getString(CANTEEN)
+        val currentCanteenName = canteenName
+        updateItems(BackendApi.canteens, day, currentCanteenName, items, adapter)
         BackendApi.onUpdate(Response.Listener {
-            updateItems(it, day, canteenName, items, adapter)
+            updateItems(it, day, currentCanteenName, items, adapter)
         })
 
         return view
@@ -67,7 +69,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
                 //searchWeb(item.meal.meal + item.meal.dish)
             }
             is ListItem.HeaderItem -> {
-                shareText("Ich gehe zu ${item.line.getNiceName()}")
+                shareText("Ich gehe zu ${item.line.getNiceName()}:  https://www.sw-ka.de/en/essen/?line=${item.line.name}&canteen=$canteenName\n ${item.line.formattedTextWithMeals}")
             }
         }
     }
@@ -78,7 +80,7 @@ class DayOverview : Fragment(), SharedPreferences.OnSharedPreferenceChangeListen
             putExtra(Intent.EXTRA_TEXT, text)
             type = "text/plain"
         }
-        startActivity(Intent.createChooser(sendIntent, "Share '$text' with"))
+        startActivity(Intent.createChooser(sendIntent, "Share this text with:\n$text"))
     }
 
 

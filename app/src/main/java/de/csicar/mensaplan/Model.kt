@@ -124,6 +124,11 @@ sealed class Line(val name: String) {
     }
 
     fun getNiceName(): String = niceNames.get(name) ?: name
+
+    val formattedTextWithMeals get() = when (this) {
+            is OpenLine -> getNiceName() + ": \n" + meals.map { it.displayName }.joinToString("\n")
+            is ClosedLine -> getNiceName() + "\n-"
+        }
 }
 
 data class Meal(
@@ -171,6 +176,7 @@ data class Meal(
             return additives
         }
 
+
         /**
          * @return List of Pair<ShortName, LongName>
          */
@@ -199,6 +205,8 @@ data class Meal(
             additives.contains(it.first)
         }
     }
+
+    val displayName get() = "$meal $dish"
 }
 
 class Price(val price1: Double, val price2: Double, val price3: Double, val price4: Double, val priceFlag: Int) {

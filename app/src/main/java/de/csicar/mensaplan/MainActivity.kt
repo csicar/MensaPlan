@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.ActivityOptions
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -18,6 +19,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.text.format.DateUtils
+import android.util.Log
 import android.util.Pair
 import android.view.Menu
 import android.view.MenuItem
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
+        tryExtractPathFromIndent()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         selectedCanteenName = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString("selected_canteen", "adenauerring")
         selectedCanteenName = savedInstanceState?.getString(CANTEEN) ?: selectedCanteenName
+        selectedCanteenName = tryExtractPathFromIndent() ?: selectedCanteenName
         selectedCanteenName = intent.getStringExtra(CANTEEN) ?: selectedCanteenName
 
 
@@ -96,6 +100,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 isInitialLoad = false
             }
         })
+
+    }
+
+    fun tryExtractPathFromIndent() : String? {
+        val fullPath = intent.data?.encodedSchemeSpecificPart ?: return null
+        Log.v("asd", ""+fullPath)
+        val url = Uri.parse(fullPath)
+
+        val line = url.getQueryParameter("line")
+        val canteen = url.getQueryParameter("canteen")
+
+        Log.v("asd", "line: "+line)
+
+        return canteen
 
     }
 
