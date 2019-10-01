@@ -10,7 +10,7 @@ android {
         applicationId "de.csicar.mensaplan"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 3
+        versionCode 4
         versionName "v0.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
